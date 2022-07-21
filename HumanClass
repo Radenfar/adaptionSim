@@ -1,0 +1,26 @@
+class Human:
+    def __init__(self, name, immunity=False, infected = False):
+        self.name = name
+        self.immunity = immunity
+        self.infected = infected
+    
+    def infect_human(self, days_num):
+        if self.immunity == False:
+            self.infected = True
+        self.days_num = days_num
+
+    def disinfect_human(self):
+        self.infected = False
+        self.immunity = True
+
+    def get_day_of_infection(self):
+        return self.days_num
+    
+    def is_infected(self):
+        return self.infected
+
+    def immunise_human(self):
+        self.immunity = True
+    
+    def __str__(self) -> str:
+        return str(self.name + ': ' + str(self.infected))
