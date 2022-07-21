@@ -1,0 +1,46 @@
+class Disease:
+    def __init__(self, name, R, Severity, period, total_infections = 0, total_deaths = 0, infections_graph = [], deaths_graph = []): #R is number of people they will infect, Severity is decimal chance of dying, period is how long until they are cleared
+        self.name = name
+        self.R = R
+        self.Severity = Severity
+        self.period = period
+        self.total_infections = total_infections
+        self.total_deaths = total_deaths
+        self.infections_graph = infections_graph
+        self.deaths_graph = deaths_graph
+    
+    def add_infection(self):
+        self.total_infections += 1
+    
+    def add_death(self):
+        self.total_deaths += 1
+
+    def daily_update(self, new_cases, new_deaths):
+        self.infections_graph.append(new_cases)
+        self.deaths_graph.append(new_deaths)
+    
+    def get_daily_infections(self):
+        return self.infections_graph
+    
+    def get_daily_deaths(self):
+        return self.deaths_graph
+    
+    def get_r_naught(self):
+        return self.R
+    
+    def get_severity(self):
+        return self.Severity
+    
+    def get_period(self):
+        return self.period
+    
+    def __str__(self) -> str:
+        printer = '-'*20
+        print(printer)
+        print("Name: " + self.name)
+        print('R naught: ' + str(self.R))
+        print('Severity: ' + str(self.Severity))
+        print('Infectious Period: ' + str(self.period))
+        print('Total Infections: ' + str(self.total_infections))
+        print('Total Deaths: ' + str(self.total_deaths))
+        return printer
